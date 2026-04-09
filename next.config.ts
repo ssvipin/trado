@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true
   },
-   turbopack: {
+  turbopack: {
     root: path.join(__dirname, '..'),
   },
 };

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label } from '../ui/label'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { Input } from '../ui/input'
 
 const InputField = ({ name, label, placeholder, register, error, validation, type="text", disabled, value }: FormInputProps) => {

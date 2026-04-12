@@ -33,5 +33,4 @@ export const connectToDatabase = async () => {
         cache.promise = null;
         throw error;
     }
-    console
 }

@@ -1,5 +1,5 @@
 'use client'
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,9 +8,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "./ui/dropdown-menu"
 import { useRouter } from "next/navigation"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { LogOut } from "lucide-react"
 import NavItems from "./NavItems"
 

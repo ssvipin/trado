@@ -12,9 +12,10 @@ declare global {
         investmentGoals: string;
         riskTolerance: string;
         preferredIndustry: string;
+        control?: Control;
     };
 
-    type CountrySelectProps = {
+    type CountrySelectProps= {
         name: string;
         label: string;
         control: Control;

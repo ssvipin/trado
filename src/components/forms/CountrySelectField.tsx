@@ -6,7 +6,7 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '@/components/ui/popover';
+} from '../ui/popover';
 import {
     Command,
     CommandEmpty,
@@ -14,11 +14,11 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from '@/components/ui/command';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+} from '../ui/command';
+import { Button } from '../ui/button';
+import { Label } from '../ui/label';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import countryList from 'react-select-country-list';
 
 type CountrySelectProps = {

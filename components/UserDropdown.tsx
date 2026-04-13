@@ -13,19 +13,20 @@ import { useRouter } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { LogOut } from "lucide-react"
 import NavItems from "./NavItems"
+import { signOut } from "../lib/actions/auth.actions"
 
 interface userType {
     name: string;
     email: string;
 }
-const UserDropdown: React.FC = () => {
+const UserDropdown = ({ user }: { user: User }) => {
     const router = useRouter();
 
     const handleSignOut: () => void = async () => {
+        await signOut();
         router.push("/sign-in")
     }
 
-    const user: userType = { name: 'John', email: 'abc@gmail.com' }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -61,12 +62,12 @@ const UserDropdown: React.FC = () => {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-gray-600" />
                     <DropdownMenuItem onClick={handleSignOut} className="text-gray-100 text-base font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer">
-                        <LogOut className="h-4 w-4 mr-2 hidden sm:block"/>
+                        <LogOut className="h-4 w-4 mr-2 hidden sm:block" />
                         Logout
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="bg-gray-600 sm:hidden" />
                     <nav className="sm:hidden">
-                        <NavItems/>
+                        <NavItems />
                     </nav>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

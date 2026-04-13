@@ -9,9 +9,12 @@ import { Button } from '@base-ui/react';
 import { FormInput } from 'lucide-react';
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { signUpWithEmail } from '../../../lib/actions/auth.actions';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const Signup: () => React.ReactElement = () => {
-
+  const router = useRouter();
   const { register, handleSubmit, control, formState: { errors, isSubmitting } } = useForm<SignUpFormData>({
     defaultValues: {
       fullName: '',
@@ -27,8 +30,13 @@ const Signup: () => React.ReactElement = () => {
 
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      console.log(data);
+      const result = await signUpWithEmail(data);
+      console.log(result);
+      if (result.success) {
+        router.push("/");
+      }
     } catch (e) {
+      toast.error('Sign-up failed. Please try again.');
       console.log(e);
     }
   }

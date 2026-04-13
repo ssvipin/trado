@@ -1,33 +1,29 @@
 import { betterAuth } from "better-auth";
-import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { mongodbAdapter} from "better-auth/adapters/mongodb";
 import { connectToDatabase } from "../../database/mongoose";
-import { nextCookies } from "better-auth/next-js";
+import { nextCookies} from "better-auth/next-js";
 
-let authInstance: ReturnType<typeof betterAuth> | null = null;
+let authInstance: any | null = null;
 
 export const getAuth = async () => {
-    if (authInstance) {
-        return authInstance;
-    }
+    if(authInstance) return authInstance;
 
     const mongoose = await connectToDatabase();
     const db = mongoose.connection.db;
 
-    if (!db) {
-        throw new Error("Database connection failed");
-    }
+    if(!db) throw new Error('MongoDB connection not found');
 
     authInstance = betterAuth({
-        adapter: mongodbAdapter(db as any),
+        database: mongodbAdapter(db as any),
         secret: process.env.BETTER_AUTH_SECRET,
-        baseUrl: process.env.BETTER_AUTH_URL,
-        emailAndPassword:{
-                enabled: true,
-                disableSignUp: false,
-                requireEmailVerification: false,
-                minPasswordLength: 6,
-                maxPasswordLength: 128,
-                autoSignIn: true,
+        baseURL: process.env.BETTER_AUTH_URL,
+        emailAndPassword: {
+            enabled: true,
+            disableSignUp: false,
+            requireEmailVerification: false,
+            minPasswordLength: 8,
+            maxPasswordLength: 128,
+            autoSignIn: true,
         },
         plugins: [nextCookies()],
     });

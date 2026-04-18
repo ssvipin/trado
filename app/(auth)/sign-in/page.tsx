@@ -23,13 +23,10 @@ const SignIn = () => {
     });
 
     const onSubmit = async (data: SignInFormData) => {
-        console.log(data);
         try {
             const result = await signInWithEmail(data);
-            console.log(result);
             if(result.success) router.push('/');
         } catch (e) {
-            console.error(e);
             toast.error('Sign in failed', {
                 description: e instanceof Error ? e.message : 'Failed to sign in.'
             })

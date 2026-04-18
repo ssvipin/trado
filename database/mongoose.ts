@@ -14,11 +14,9 @@ if (!cache) {
 }
 
 export const connectToDatabase = async () => {
-    console.log(MONGODB_URI);
     if(!MONGODB_URI) {
         throw new Error('MONGODB_URI is not defined in environment variables');
     }
-    console.log(cache.conn);
     if (cache.conn) {
         return cache.conn;
     }

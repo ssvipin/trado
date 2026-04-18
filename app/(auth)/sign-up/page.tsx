@@ -31,7 +31,6 @@ const Signup: () => React.ReactElement = () => {
   const onSubmit = async (data: SignUpFormData) => {
     try {
       const result = await signUpWithEmail(data);
-      console.log(result);
       if (result.success) {
         router.push("/");
       }

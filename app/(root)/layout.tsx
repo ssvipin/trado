@@ -8,7 +8,9 @@ interface layoutProps {
 }
 
 const layout: React.FC<layoutProps> = async ({ children }) => {
-  const session = await auth?.api.getSession({ headers: await headers() })
+
+  const session = await auth?.api?.getSession({ headers: await headers() })
+
   if (!session) {
     redirect('/sign-in');
   }

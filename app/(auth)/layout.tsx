@@ -5,9 +5,10 @@ import { auth } from '../../lib/betterAuth/auth'
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 const Layout: React.FC<React.PropsWithChildren> = async({ children }) => {
-    const session = await auth?.api.getSession({ headers: await headers() })
 
-    if (session.user) {
+    const session = await auth?.api?.getSession({ headers: await headers() })
+
+    if (session?.user) {
         redirect('/');
     } 
 

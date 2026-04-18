@@ -19,7 +19,7 @@ interface userType {
     name: string;
     email: string;
 }
-const UserDropdown = ({ user }: { user: User }) => {
+const UserDropdown = ({ user, initialStocks }: { user: User; initialStocks: StockWithWatchlistStatus[] }) => {
     const router = useRouter();
 
     const handleSignOut: () => void = async () => {
@@ -67,7 +67,7 @@ const UserDropdown = ({ user }: { user: User }) => {
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="bg-gray-600 sm:hidden" />
                     <nav className="sm:hidden">
-                        <NavItems />
+                        <NavItems initialStocks={initialStocks} />
                     </nav>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
